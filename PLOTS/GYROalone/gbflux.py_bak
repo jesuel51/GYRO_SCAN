@@ -1,0 +1,57 @@
+# this script is used to plot the file out.gyro.gbflux, the format of the file is 
+# n_kinetic, n_field,4=i, n_time
+# it's highly recommended that the scripts should be named after the gyro ouput file name
+# before reading such a file, we should run one script which offer the dimentional parameter
+root['PLOTS']['GYROalone']['getdim.py'].run()
+dim=root['SETTINGS']['DEPENDENCIES']['dim']
+n_kinetic = dim['n_kinetic']
+n_field   = dim['n_field']
+n_time    = dim['n_time']
+# read the data
+f_gbflux=open(root['OUTPUTS']['out.gyro.gbflux'].filename,'Ur')
+data_gbflux = f_gbflux.readlines()
+data_gbflux =array([float(item) for item in data_gbflux])
+# transfrom into array
+#data_gbflux_array=data_gbflux.reshape((n_kinetic,n_field,4,n_time))
+data_gbflux_array=data_gbflux.reshape((n_time,4,n_field,n_kinetic)).T
+# let's plot, note here we only plot the main parts, the others can be plotted similarly if needed
+time_max=root['INPUTS']['input.gyro']['TIME_MAX']
+t=linspace(0,time_max,n_time)
+figure(figsize=[8,8])
+lw=2
+fs1=24
+fs2=20
+subplot(2,2,1)
+plot(t,data_gbflux_array[-1][0][0],'-b',label='Electron')
+plot(t,data_gbflux_array[-0][0][0],'-r',label='Ion')
+xticks(fontsize=fs2,fontname='serif')
+yticks(fontsize=fs2,fontname='serif')
+ylabel('GB',fontsize=fs2,fontname='serif')
+legend(loc=0,fontsize=fs2).draggable(True)
+title('$\Gamma$',fontsize=fs1,family='serif')
+subplot(2,2,2)
+plot(t,data_gbflux_array[-1][0][1],'-b')
+plot(t,data_gbflux_array[-0][0][1],'-r')
+xticks(fontsize=fs2,fontname='serif')
+yticks(fontsize=fs2,fontname='serif')
+#ylabel('GB',fontsize=fs2,fontname='serif')
+#legend(loc=0,fontsize=fs2).draggable(True)
+title('Q',fontsize=fs1,family='serif')
+subplot(2,2,3)
+plot(t,data_gbflux_array[-1][0][2],'-b')
+plot(t,data_gbflux_array[-0][0][2],'-r')
+xticks(fontsize=fs2,fontname='serif')
+yticks(fontsize=fs2,fontname='serif')
+ylabel('GB',fontsize=fs2,fontname='serif')
+xlabel('t(a/c_s)',fontsize=fs2,fontname='serif')
+#legend(loc=0,fontsize=fs2).draggable(True)
+title('\Pi',fontsize=fs1,family='serif')
+subplot(2,2,4)
+plot(t,data_gbflux_array[-1][0][3],'-b')
+plot(t,data_gbflux_array[-0][0][3],'-r')
+xticks(fontsize=fs2,fontname='serif')
+yticks(fontsize=fs2,fontname='serif')
+ylabel('GB',fontsize=fs2,fontname='serif')
+#legend(loc=0,fontsize=fs2).draggable(True)
+title('S_{tur}',fontsize=fs1,family='serif')
+xlabel('t(a/c_s)',fontsize=fs2,fontname='serif')

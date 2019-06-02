@@ -1,0 +1,43 @@
+['INPUTS'] <-:-:-> OMFITtree <-:-:->  <-:-:-> {}
+['INPUTS']['input.gyro'] <-:-:-> OMFITgaCode <-:-:-> ./INPUTS/input.gyro <-:-:-> {}
+['OUTPUTS'] <-:-:-> OMFITtree <-:-:->  <-:-:-> {}
+['INPUTScan'] <-:-:-> OMFITtree <-:-:->  <-:-:-> {}
+['OUTPUTScan'] <-:-:-> OMFITtree <-:-:->  <-:-:-> {}
+['SCRIPTS'] <-:-:-> OMFITtree <-:-:->  <-:-:-> {}
+['SCRIPTS']['runGYRO.py'] <-:-:-> OMFITpythonTask <-:-:-> ./SCRIPTS/runGYRO.py <-:-:-> {}
+['SCRIPTS']['GYROScan.py'] <-:-:-> OMFITpythonTask <-:-:-> ./SCRIPTS/GYROScan.py <-:-:-> {}
+['SCRIPTS']['L_M3Scan.py'] <-:-:-> OMFITpythonTask <-:-:-> ./SCRIPTS/L_M3Scan.py <-:-:-> {}
+['SCRIPTS']['L_M3Scan2.py'] <-:-:-> OMFITpythonTask <-:-:-> ./SCRIPTS/L_M3Scan2.py <-:-:-> {}
+['SCRIPTS']['L_M3Scan3.py'] <-:-:-> OMFITpythonTask <-:-:-> ./SCRIPTS/L_M3Scan3.py <-:-:-> {}
+['SCRIPTS']['L_M3Scan_2d.py'] <-:-:-> OMFITpythonTask <-:-:-> ./SCRIPTS/L_M3Scan_2d.py <-:-:-> {}
+['SCRIPTS']['subscan_lin.py'] <-:-:-> OMFITpythonTask <-:-:-> ./SCRIPTS/subscan_lin.py <-:-:-> {}
+['SCRIPTS']['subscan_lin4.py'] <-:-:-> OMFITpythonTask <-:-:-> ./SCRIPTS/subscan_lin4.py <-:-:-> {}
+['SCRIPTS']['subscan_lin_2d.py'] <-:-:-> OMFITpythonTask <-:-:-> ./SCRIPTS/subscan_lin_2d.py <-:-:-> {}
+['SCRIPTS']['set_resolution.py'] <-:-:-> OMFITpythonTask <-:-:-> ./SCRIPTS/set_resolution.py <-:-:-> {}
+['PLOTS'] <-:-:-> OMFITtree <-:-:->  <-:-:-> {}
+['PLOTS']['GYROalone'] <-:-:-> OMFITtree <-:-:->  <-:-:-> {}
+['PLOTS']['GYROalone']['getdim.py'] <-:-:-> OMFITpythonTask <-:-:-> ./PLOTS/GYROalone/getdim.py <-:-:-> {}
+['PLOTS']['GYROalone']['gbflux.py'] <-:-:-> OMFITpythonTask <-:-:-> ./PLOTS/GYROalone/gbflux.py <-:-:-> {}
+['PLOTS']['GYROalone']['gbflux_n.py'] <-:-:-> OMFITpythonTask <-:-:-> ./PLOTS/GYROalone/gbflux_n.py <-:-:-> {}
+['PLOTS']['GYROalone']['moment_u.py'] <-:-:-> OMFITpythonTask <-:-:-> ./PLOTS/GYROalone/moment_u.py <-:-:-> {}
+['PLOTS']['GYROalone']['moment_zero.py'] <-:-:-> OMFITpythonTask <-:-:-> ./PLOTS/GYROalone/moment_zero.py <-:-:-> {}
+['PLOTS']['GYROalone']['k_perp_squared.py'] <-:-:-> OMFITpythonTask <-:-:-> ./PLOTS/GYROalone/k_perp_squared.py <-:-:-> {}
+['PLOTS']['GYROscan'] <-:-:-> OMFITtree <-:-:->  <-:-:-> {}
+['PLOTS']['GYROscan']['linGYRO.py'] <-:-:-> OMFITpythonTask <-:-:-> ./PLOTS/GYROscan/linGYRO.py <-:-:-> {}
+['PLOTS']['GYROscan']['linGYRO_2d.py'] <-:-:-> OMFITpythonTask <-:-:-> ./PLOTS/GYROscan/linGYRO_2d.py <-:-:-> {}
+['PLOTS']['GYROscan']['eigenfunc.py'] <-:-:-> OMFITpythonTask <-:-:-> ./PLOTS/GYROscan/eigenfunc.py <-:-:-> {}
+['PLOTS']['GYROscan']['eigenfunc_2d.py'] <-:-:-> OMFITpythonTask <-:-:-> ./PLOTS/GYROscan/eigenfunc_2d.py <-:-:-> {}
+['PLOTS']['GYROscan']['freqvstime.py'] <-:-:-> OMFITpythonTask <-:-:-> ./PLOTS/GYROscan/freqvstime.py <-:-:-> {}
+['PLOTS']['GYROscan']['freqvstime_2d.py'] <-:-:-> OMFITpythonTask <-:-:-> ./PLOTS/GYROscan/freqvstime_2d.py <-:-:-> {}
+['Cases'] <-:-:-> OMFITtree <-:-:->  <-:-:-> {}
+['GUIS'] <-:-:-> OMFITtree <-:-:->  <-:-:-> {}
+['IPS'] <-:-:-> OMFITtree <-:-:->  <-:-:-> {}
+['SETTINGS'] <-:-:-> OMFITnamelist <-:-:-> ./SettingsNamelist.txt <-:-:-> {}
+['SETTINGS']['SETUP']['workDir'] <-:-:-> OMFITexpression <-:-:-> _"OMFITworkDir(root,'')" <-:-:-> {}
+['SETTINGS']['EXPERIMENT']['shot'] <-:-:-> OMFITexpression <-:-:-> _"try:\n    return_variable=OMFITmodules[-2]['SETTINGS']['EXPERIMENT']['shot']\nexcept:\n    return_variable=MainSettings['EXPERIMENT']['shot']\n" <-:-:-> {}
+['SETTINGS']['EXPERIMENT']['time'] <-:-:-> OMFITexpression <-:-:-> _"try:\n    return_variable=OMFITmodules[-2]['SETTINGS']['EXPERIMENT']['time']\nexcept:\n    return_variable=MainSettings['EXPERIMENT']['time']\n" <-:-:-> {}
+['SETTINGS']['EXPERIMENT']['device'] <-:-:-> OMFITexpression <-:-:-> _"try:\n    return_variable=OMFITmodules[-2]['SETTINGS']['EXPERIMENT']['device']\nexcept:\n    return_variable=MainSettings['EXPERIMENT']['device']\n" <-:-:-> {}
+['SETTINGS']['EXPERIMENT']['shots'] <-:-:-> OMFITexpression <-:-:-> _"try:\n    return_variable=OMFITmodules[-2]['SETTINGS']['EXPERIMENT']['shots']\nexcept:\n    return_variable=MainSettings['EXPERIMENT']['shots']\n" <-:-:-> {}
+['SETTINGS']['EXPERIMENT']['times'] <-:-:-> OMFITexpression <-:-:-> _"try:\n    return_variable=OMFITmodules[-2]['SETTINGS']['EXPERIMENT']['times']\nexcept:\n    return_variable=MainSettings['EXPERIMENT']['times']\n" <-:-:-> {}
+['SETTINGS']['EXPERIMENT']['runid'] <-:-:-> OMFITexpression <-:-:-> _"try:\n    return_variable=OMFITmodules[-2]['SETTINGS']['EXPERIMENT']['runid']\nexcept:\n    return_variable=MainSettings['EXPERIMENT']['runid']\n" <-:-:-> {}
+['help'] <-:-:-> OMFITascii <-:-:-> ./help.txt <-:-:-> {}

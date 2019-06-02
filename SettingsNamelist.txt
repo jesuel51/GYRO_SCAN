@@ -1,0 +1,83 @@
+ &PHYSICS
+ Range = 2 6 10
+ mode = 'lin'
+ Para='SAFETY_FACTOR'
+ case_tag='lingyro'
+ wr_guess = 
+ wi_guess = 
+ kyarr=0.1           0.2           0.3           0.4           0.5           0.6
+ imthd = 1
+ &2d
+ Para_x = 'SAFETY_FACTOR'
+ Para_y = 'SHEAR'
+ Range_x = 2 4 6
+ Range_y = 0.4 0.8
+ kyarr = 0.2
+ imthd = 2
+ /
+ /
+ &SETUP
+ server='kuafu'
+ workDir = 
+ executable = 
+ gyro_flag = 'lin'
+ workDir =
+ executable ='gyro -e . -n 2'
+ num_nodes=1
+ num_cores=16
+ wall_time=24:00:00
+ pbs_queue='medium'
+ ratio_time=0.5
+ reso_para= 3 4 0
+ /
+ &PLOTS
+ idimplt = 1
+ Para='SAFETY_FACTOR'
+ mode = 'lin'
+ Range = 2 6 10
+ kyarr=0.1           0.2           0.3           0.4           0.5           0.6
+ iwritelin = 0
+ effnum = 6
+ ipltExB = 0
+ t_trace = 10 100 200
+ iwrite = 0
+ iflwphy =  1
+ ky_eigen = 0.3
+ paraval_eigen = 1.0
+ csda= 0 1.e5
+ ibelow0= 1 -0.01
+ &2d
+ Para_x = 'SAFETY_FACTOR'
+ Para_y = 'SHEAR'
+ para_x_eigen = 4
+ para_y_eigen = 1
+ Range_x = 2 4 6
+ Range_y = 0.4 0.8
+ kyarr = 0.2
+ iflwphy = 1
+ /
+ /
+ &EXPERIMENT
+ shot = 
+ time = 
+ device = 
+ shots = 
+ times = 
+ runid = 
+ /
+ &REMOTE_SETUP
+ serverPicker = 'shenma'
+ workDir = '/cluster-scratch/jianx/OMFIT/runs/GYRO_Scan/0'
+ server = 'jianx@iris'
+ tunnel = ''
+ /
+ &MODULE
+ ID = 'GYRO_SCAN'
+ edited_by = 'jianx'
+ date = '03 Jul 2016  15:34'
+ version = u''
+ contact = '' 'xiangjian@hust.edu.cn'
+ /
+ &DEPENDENCIES
+ linout='/home/jianx/proname/deploy/gyrorun/lingyro/gyro_para_lin_scan.txt'
+ /
