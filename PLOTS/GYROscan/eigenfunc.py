@@ -1,6 +1,7 @@
 # this script is used to give the linear information of gyro
 # including 2 part, 1, plot the eigenfunction, 2, print the eigenfrequency and growth rate
 # first we define a function to read the out.gyro.freq
+# next step we would like to put those files to be independent files
 def readfreq(filename):
     f=open(filename,'Ur')
     fread=f.readlines()
